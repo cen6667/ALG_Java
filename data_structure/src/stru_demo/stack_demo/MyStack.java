@@ -1,4 +1,4 @@
-package stru_demo.strack_demo;
+package stru_demo.stack_demo;
 
 /*
  * 用数组来实现栈，规定新添加的元素总是在原有数组的后面

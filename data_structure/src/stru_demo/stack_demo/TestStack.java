@@ -1,4 +1,4 @@
-package stru_demo.strack_demo;
+package stru_demo.stack_demo;
 
 import java.util.ArrayList;
 import java.util.Scanner;
