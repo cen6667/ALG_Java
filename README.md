@@ -1,13 +1,16 @@
 # ALG_Java
 
-## 目标
+# 目标
 
 + 数据结构与算法ACM模式
 + 每个解法要标注时间复杂度和空间复杂度
 + 学会使用库函数
 + 学会不使用库函数
 
+# 易错点
 
++ 需要多次输出非基本数据类型时，一定要new啊，否则后面的操作会改变它的
++ 回溯每个点都要回溯，不要跳过回溯否则平添麻烦
 
 # 理解
 
@@ -175,3 +178,26 @@ Deque
 回溯
 
 对称二叉树、平衡二叉树
+
+## 回溯
+
+
+
+```
+public void pathRes(TreeNode root, int targetSum) {
+    if (root == null) return;
+    //1.添加节点
+    deque.addLast(root.val);
+    
+    //2.算法实现过程
+    。。。
+    
+    //3.进入下一层
+    pathRes(root.left, targetSum - root.val);
+    pathRes(root.right, targetSum - root.val);
+    
+    //4.回溯本层节点
+    //回溯每个点都要回溯，不要跳过回溯否则平添麻烦
+    deque.pollLast();
+}
+```
