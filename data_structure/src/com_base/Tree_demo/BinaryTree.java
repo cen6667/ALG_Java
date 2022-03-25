@@ -1,7 +1,6 @@
 package com_base.Tree_demo;
 
-import java.util.Deque;
-import java.util.LinkedList;
+import java.util.*;
 
 public class BinaryTree {
 
@@ -44,5 +43,49 @@ public class BinaryTree {
         }
         return root;
     }
+
+    public static String[] showBinaryTreeByArray(TreeNode root){
+        if(root == null) return new String[0];
+        LinkedList<String> resque = new LinkedList<>();
+
+        Deque<TreeNode> deque = new LinkedList<>();
+
+        deque.addLast(root);
+        resque.addLast(root.val+"");
+        while (!deque.isEmpty()){
+            boolean allnullflag = true;
+            int len = deque.size();
+            LinkedList<String> nullstr = new LinkedList<>();
+
+            while(len-->0){
+                TreeNode tmp = deque.pollFirst();
+                if (tmp.left != null) {
+                    deque.addLast(tmp.left);
+                    nullstr.add(tmp.left.val+"");
+                    allnullflag = false;
+                }
+                else nullstr.add("null");
+                if (tmp.right != null){
+                    deque.addLast(tmp.right);
+                    nullstr.add(tmp.right.val+"");
+                    allnullflag = false;
+                }
+                else nullstr.add("null");
+            }
+            if (!allnullflag) resque.addAll(nullstr);
+        }
+        while (resque.peekLast()=="null"){
+            resque.pollLast();
+        }
+        String[] arr = new String[resque.size()];
+        return resque.toArray(arr);
+    }
+
+//    public static void main(String[] args) {
+//        Integer[] arr = {5, 4, 8, 11, null, 13, 4, 7, 2, null, null, 5, 1};
+//        TreeNode root = createBinaryTreeByArray(arr);
+//        String[] arrout = showBinaryTreeByArray(root);
+//        System.out.println(Arrays.toString(arrout));
+//    }
 
 }
