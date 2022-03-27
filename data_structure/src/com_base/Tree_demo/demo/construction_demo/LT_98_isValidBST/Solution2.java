@@ -30,6 +30,21 @@ public class Solution2 {
         }
         return true;
     }
+//中序遍历简洁写法
+//如果测试数据中有 longlong的最小值，怎么办？
+    TreeNode prenode = null; // 用来记录前一个节点
+    public boolean isValidBST2(TreeNode root) {
+        if (root == null) {
+            return true;
+        }
+        if (!isValidBST2(root.left)) {
+            return false;
+        }
+        if (prenode == null || prenode.val < root.val) prenode = root;
+        else return false;
+
+        return isValidBST2(root.right);
+    }
 
 
 
@@ -41,6 +56,6 @@ public class Solution2 {
         BinaryTree bt = new BinaryTree(arr);
 
         Solution2 sl = new Solution2();
-        System.out.println(sl.isValidBST(bt.root));
+        System.out.println(sl.isValidBST2(bt.root));
     }
 }

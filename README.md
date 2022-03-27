@@ -12,6 +12,14 @@
 + 需要多次输出非基本数据类型时，一定要new啊，否则后面的操作会改变它的
 + 回溯每个点都要回溯，不要跳过回溯否则平添麻烦
 
+
+
+# 小妙招
+
++ 如果递归不想新增参数，就把参数变成成员变量，就不用输入了
+
+
+
 # 理解
 
 ## 数组
@@ -172,8 +180,46 @@ Deque
 深度前序遍历
 
 + 遍历的核心代码，递归和迭代分别总结
++ 
 
-层序遍历、前中后遍历
+前中后遍历
+
+```java
+public boolean isValidBST(TreeNode root) {
+    if (root == null) return true;
+    boolean leftbl = isValidBST(root.left); //左 root.left
+    
+    if (max < root.val) max = root.val;//中 用root进行各种操作
+    else return false;
+    
+    boolean rightbl = isValidBST(root.right);//右 root.right
+    return leftbl && rightbl;
+}
+```
+
+
+
+```java
+
+```
+
+层序遍历、
+
+```java
+
+```
+
+
+
+```java
+
+```
+
+
+
+
+
+
 
 回溯
 
@@ -183,7 +229,7 @@ Deque
 
 
 
-```
+```java
 public void pathRes(TreeNode root, int targetSum) {
     if (root == null) return;
     //1.添加节点
