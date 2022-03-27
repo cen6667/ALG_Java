@@ -197,10 +197,16 @@ public boolean isValidBST(TreeNode root) {
 }
 ```
 
-
+中序遍历
 
 ```java
-
+void searchBST(TreeNode cur) {
+    if (cur == null) return ;
+    searchBST(cur.left);       // 左
+    （处理节点）                // 中
+    searchBST(cur.right);      // 右
+    return ;
+}
 ```
 
 层序遍历、
