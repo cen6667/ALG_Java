@@ -80,7 +80,7 @@ public class BinaryTree {
 //    }
 
     public static void showBinaryTree(TreeNode root) {
-        Integer[] arrout = showBinaryTreeByArray3(root);
+        String[] arrout = showBinaryTreeByArray(root);
         System.out.println(Arrays.toString(arrout));
     }
 
@@ -92,7 +92,6 @@ public class BinaryTree {
         Deque<TreeNode> deque = new LinkedList<>();
 
         deque.addLast(root);
-        resque.addLast(root.val + "");
         while (!deque.isEmpty()) {
             int len = deque.size();
 
@@ -121,7 +120,6 @@ public class BinaryTree {
         Deque<TreeNode> deque = new LinkedList<>();
 
         deque.addLast(root);
-        resque.addLast(root.val);
         while (!deque.isEmpty()) {
             int len = deque.size();
 
@@ -140,7 +138,6 @@ public class BinaryTree {
             resque.pollLast();
         }
         Integer[] arr = new Integer[resque.size()];
-        System.out.println(resque);
         return resque.toArray(arr);
     }
 
