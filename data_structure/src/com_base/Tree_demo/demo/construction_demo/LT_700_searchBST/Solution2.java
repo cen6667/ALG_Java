@@ -3,7 +3,8 @@ package com_base.Tree_demo.demo.construction_demo.LT_700_searchBST;
 import com_base.Tree_demo.BinaryTree;
 import com_base.Tree_demo.TreeNode;
 
-import java.util.Arrays;
+
+import static com_base.Tree_demo.BinaryTree.showBinaryTree;
 
 //合成二叉树，两个二叉树相加
 //使用递归前序遍历
@@ -24,7 +25,6 @@ public class Solution2 {
 
         Solution2 sl = new Solution2();
         TreeNode root = sl.searchBST(bt.root, val);
-        String[] arrout = BinaryTree.showBinaryTreeByArray(root);
-        System.out.println(Arrays.toString(arrout));
+        showBinaryTree(root);
     }
 }

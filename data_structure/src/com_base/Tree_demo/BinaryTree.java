@@ -79,7 +79,12 @@ public class BinaryTree {
 //        return resque.toArray(arr);
 //    }
 
-    public static String[] showBinaryTreeByArray(TreeNode root) {
+    public static void showBinaryTree(TreeNode root) {
+        Integer[] arrout = showBinaryTreeByArray3(root);
+        System.out.println(Arrays.toString(arrout));
+    }
+
+    private static String[] showBinaryTreeByArray(TreeNode root) {
 //        链表可以加空值
         if (root == null) return new String[0];
         LinkedList<String> resque = new LinkedList<>();
@@ -109,7 +114,7 @@ public class BinaryTree {
         return resque.toArray(arr);
     }
 
-    public static Integer[] showBinaryTreeByArray3(TreeNode root) {
+    private static Integer[] showBinaryTreeByArray3(TreeNode root) {
         if (root == null) return new Integer[0];
         LinkedList<Integer> resque = new LinkedList<>();
 

@@ -3,9 +3,10 @@ package com_base.Tree_demo.demo.construction_demo.LT_617_mergeTrees;
 import com_base.Tree_demo.BinaryTree;
 import com_base.Tree_demo.TreeNode;
 
-import java.util.Arrays;
 import java.util.Deque;
 import java.util.LinkedList;
+
+import static com_base.Tree_demo.BinaryTree.showBinaryTree;
 
 public class Solution2 {
     public TreeNode mergeTrees(TreeNode root1, TreeNode root2) {
@@ -49,7 +50,6 @@ public class Solution2 {
 
         Solution2 sl = new Solution2();
         TreeNode root = sl.mergeTrees(bt1.root, bt2.root);
-        String[] arrout = BinaryTree.showBinaryTreeByArray(root);
-        System.out.println(Arrays.toString(arrout));
+        showBinaryTree(root);
     }
 }

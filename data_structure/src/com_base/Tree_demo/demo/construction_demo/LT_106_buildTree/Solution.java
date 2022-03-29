@@ -4,7 +4,7 @@ import com_base.Tree_demo.TreeNode;
 
 import java.util.Arrays;
 
-import static com_base.Tree_demo.BinaryTree.showBinaryTreeByArray;
+import static com_base.Tree_demo.BinaryTree.showBinaryTree;
 
 // 从前序与中序遍历序列构造二叉树
 public class Solution {
@@ -48,7 +48,6 @@ public class Solution {
         int[] postorder = {9,15,7,20,3};
         Solution sl = new Solution();
         TreeNode root = sl.buildTree(inorder, postorder);
-        String[] arrout = showBinaryTreeByArray(root);
-        System.out.println(Arrays.toString(arrout));
+        showBinaryTree(root);
     }
 }

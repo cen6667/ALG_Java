@@ -5,6 +5,8 @@ import com_base.Tree_demo.TreeNode;
 
 import java.util.Arrays;
 
+import static com_base.Tree_demo.BinaryTree.showBinaryTree;
+
 //合成二叉树，两个二叉树相加
 //使用递归前序遍历
 public class Solution {
@@ -26,7 +28,6 @@ public class Solution {
 
         Solution sl = new Solution();
         TreeNode root = sl.mergeTrees(bt1.root, bt2.root);
-        String[] arrout = BinaryTree.showBinaryTreeByArray(root);
-        System.out.println(Arrays.toString(arrout));
+        showBinaryTree(root);
     }
 }

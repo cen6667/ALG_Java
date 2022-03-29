@@ -4,7 +4,7 @@ import com_base.Tree_demo.TreeNode;
 
 import java.util.Arrays;
 
-import static com_base.Tree_demo.BinaryTree.showBinaryTreeByArray;
+import static com_base.Tree_demo.BinaryTree.showBinaryTree;
 
 public class Solution {
     public TreeNode constructMaximumBinaryTree(int[] nums) {
@@ -38,7 +38,6 @@ public class Solution {
         int[] arr = {3,2,1,6,0,5};
         Solution sl = new Solution();
         TreeNode root = sl.constructMaximumBinaryTree(arr);
-        String[] arrout = showBinaryTreeByArray(root);
-        System.out.println(Arrays.toString(arrout));
+        showBinaryTree(root);
     }
 }
