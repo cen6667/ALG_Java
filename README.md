@@ -209,39 +209,96 @@ Deque
 
 高度后序遍历
 
-深度前序遍历
+深度
 
-+ 遍历的核心代码，递归和迭代分别总结
-+ 
+前序遍历
 
-前中后遍历
+
+
+### 前中后遍历
+
+#### 递归
 
 ```java
-public boolean isValidBST(TreeNode root) {
-    if (root == null) return true;
-    boolean leftbl = isValidBST(root.left); //左 root.left
-    
-    if (max < root.val) max = root.val;//中 用root进行各种操作
-    else return false;
-    
-    boolean rightbl = isValidBST(root.right);//右 root.right
-    return leftbl && rightbl;
+void inorder(TreeNode root, List<Integer> list) {
+    if (root == null) return;//停止条件
+    inorder(root.left, list);//左 root.left
+    list.add(root.val);//中 用root进行各种操作
+    inorder(root.right, list);//右 root.right
 }
 ```
+
+#### 迭代
 
 中序遍历
 
 ```java
-void searchBST(TreeNode cur) {
-    if (cur == null) return ;
-    searchBST(cur.left);       // 左
-    （处理节点）                // 中
-    searchBST(cur.right);      // 右
-    return ;
+public List<Integer> inorderTraversal(TreeNode root) {
+    List<Integer> res = new ArrayList<>();
+    if(root==null) return res;
+
+    Deque<TreeNode> stack = new LinkedList<>();
+    TreeNode cur = root;
+    while (cur != null || !stack.isEmpty()){
+        if(cur!= null){
+            stack.push(cur);
+            cur = cur.left; // 左
+        }else {
+            cur = stack.pop();// 向上找父节点，中
+            res.add(cur.val); // 输出中间结点
+            cur = cur.right; //指向右节点
+        }
+    }
+    return res;
 }
 ```
 
-层序遍历、
+前序遍历
+
+中--右--左进栈，左--右--中出栈
+
+```java
+public List<Integer> preorderTraversal(TreeNode root) {
+    List<Integer> res = new ArrayList<>();
+    if(root==null) return res;
+
+    Deque<TreeNode> stack = new LinkedList<>();
+    stack.push(root);
+    while (!stack.isEmpty()){
+        TreeNode node = stack.pop();
+        res.add(node.val);
+        if(node.right != null) stack.push(node.right);
+        if(node.left != null) stack.push(node.left);
+    }
+    return res;
+}
+```
+
+后序遍历
+
+中--左--右进栈，右--左--中出栈，再翻转为
+
+```java
+public List<Integer> postorderTraversal(TreeNode root) {
+    List<Integer> res = new ArrayList<>();
+    if(root==null) return res;
+
+    Deque<TreeNode> stack = new LinkedList<>();
+    stack.push(root);
+    while (!stack.isEmpty()){
+        TreeNode node = stack.pop();
+        res.add(node.val);
+        if (node.left != null) stack.push(node.left); //左
+        if (node.right != null) stack.push(node.right);//右
+    }
+    Collections.reverse(res);
+    return res;
+}
+```
+
+
+
+### 层序遍历
 
 ```java
 
