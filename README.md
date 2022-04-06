@@ -322,6 +322,11 @@ public List<Integer> postorderTraversal(TreeNode root) {
 
 ## 回溯
 
+### 注意
+
++ 需要有序
++ 
+
 
 
 ```java
@@ -342,3 +347,49 @@ public void pathRes(TreeNode root, int targetSum) {
     deque.pollLast();
 }
 ```
+
+### 回溯三部曲
+
++ **递归函数参数**
++ **递归终止条件**
+  + 添加结果
+
++ **单层搜索的逻辑**
+  + 递归
+  + 回溯
++ 剪枝
+
+```java
+List<List<Integer>> result = new ArrayList<>();
+LinkedList<Integer> path = new LinkedList<>();
+public List<List<Integer>> combine(int n, int k) {
+    combineHelper(n, k, 1);
+    return result;
+}
+
+/**
+     * 每次从集合中选取元素，可选择的范围随着选择的进行而收缩，调整可选择的范围，就是要靠startIndex
+     * @param startIndex 用来记录本层递归的中，集合从哪里开始遍历（集合就是[1,...,n] ）。
+     */
+private void combineHelper(int n, int k, int startIndex){
+    //终止条件
+    if (path.size() == k){
+        result.add(new ArrayList<>(path));
+        return;
+    }
+    for (int i = startIndex; i <= n; i++){
+        path.add(i);
+        combineHelper(n, k, i + 1);
+        path.removeLast();
+    }
+}
+```
+
+```java
+//剪枝
+for (int i = startIndex; i <= n - (k - path.size()) + 1; i++){
+```
+
+
+
+·
