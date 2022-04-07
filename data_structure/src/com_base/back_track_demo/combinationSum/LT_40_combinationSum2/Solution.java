@@ -13,6 +13,7 @@ public class Solution {
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
         // 排序
         Arrays.sort(candidates);
+        System.out.println(Arrays.toString(candidates));
         boolean[] flag = new boolean[candidates.length];
         backtracking(candidates, target, 0, 0, flag);
         return result;
