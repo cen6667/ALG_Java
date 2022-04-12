@@ -391,6 +391,10 @@ private void combineHelper(int n, int k, int startIndex){
 for (int i = startIndex; i <= n - (k - path.size()) + 1; i++){
 ```
 
-
-
 ·
+
+## 贪心算法
+
+经验算法
+
+从局部最优解获取全局最优解，只适合部分题，不能解决局部最优解和全局最优解冲突的情况
