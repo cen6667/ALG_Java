@@ -1,7 +1,7 @@
 package com_base.greedy_algorithm_demo.LT_452_findMinArrowShots;
 
 import java.util.Arrays;
-import java.util.LinkedList;
+import java.util.Comparator;
 
 public class Solution {
     public int findMinArrowShots2(int[][] points) {
@@ -11,8 +11,8 @@ public class Solution {
         // 2.没有保存区间，直接修改原数据
         // 3.min代替if判断（这里可能很慢）
         if (points.length == 0) return 0;
-        Arrays.sort(points, (o1, o2) -> Integer.compare(o1[0], o2[0]));
-
+        Arrays.sort(points, Comparator.comparingInt(o -> o[0]));
+        //Arrays.sort(points, (o1, o2) -> Integer.compare(o1[0], o2[0]));
         int count = 1;
         for (int i = 1; i < points.length; i++) {
             if (points[i][0] > points[i - 1][1]) {
