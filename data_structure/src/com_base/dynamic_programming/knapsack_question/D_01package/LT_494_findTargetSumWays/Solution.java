@@ -1,4 +1,4 @@
-package com_base.dynamic_programming.knapsack_question.LT_494_findTargetSumWays;
+package com_base.dynamic_programming.knapsack_question.D_01package.LT_494_findTargetSumWays;
 
 public class Solution {
     //1. 确定dp数组（dp table）以及下标的含义
