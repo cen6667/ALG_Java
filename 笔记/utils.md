@@ -91,3 +91,100 @@ Arrays.toString(nums)
 ```java
 res.add(new int[]{start, end});
 ```
+
+## 数组变List
+
+### 最佳
+
+```java
+int[] ints = {2, 34, 55, 22, 11};
+List<Integer> weightList = Arrays.stream(ints).boxed().collect(Collectors.toList());
+System.out.println(weightList);
+```
+
+
+
+### new ArrayList<>(Arrays.asList())
+
+注意Arrays.asList()输出的是不可变的List，必须重新new一个
+
+```java
+String[] str = {"fgx", "lzy"};
+ArrayList<String> strings = new ArrayList<>(Arrays.asList(str));
+strings.add("aop");
+System.out.println(strings);
+
+Integer[] i = {1,2};
+ArrayList<Integer> li = new ArrayList<>(Arrays.asList(i));
+li.add(3);
+System.out.println(li);
+
+/*
+输出：
+[fgx, lzy, aop]
+[1, 2, 3]
+*/
+```
+
+int[]数组不能使用
+
+为什么int[]不能直接转为List,而Integer[]可以转为List,而Integer[]就可以转为List了,因为List中的泛型必须是引用类型。
+
+
+
+### Collections.addAll
+
+ 通过`Collections.addAll(arrayList, strArray)`方式转换，根据数组的长度创建一个长度相同的List，然后通过`Collections.addAll()`方法，将数组中的元素转为二进制，然后添加到List中，这是最高效的方法。
+
+```java
+ public static void Demo3() {
+        String[] str = {"fgx", "lzy"};
+        ArrayList<String> stringList = new ArrayList<>(str.length);
+        Collections.addAll(stringList,str);
+    }
+
+```
+
+
+
+### 流Stream
+
+```java
+int[] ints = {2, 34, 55, 22, 11};
+long[] longs = {1, 2, 3};
+double[] doubles = {1, 2, 3};
+Arrays.stream(ints).boxed().collect(Collectors.toList());
+Arrays.stream(longs).boxed().collect(Collectors.toList());
+Arrays.stream(doubles).boxed().collect(Collectors.toList());
+
+```
+
+
+
+
+
+## int[]转Integer[]
+
+```java
+//初始化int数组
+int[] nums = {1,2,3,4,5,6};
+//将int数组转换为数值流
+IntStream stream = Arrays.stream(nums);
+//流中的元素全部装箱，转换为Integer流 
+Stream<Integer> integerStream = stream.boxed();
+//将流转换为数组
+Integer[] integers = integerStream.toArray(Integer[]::new);
+```
+
+上面是分解步骤，实际应用中一行代码即可解决
+
+```java
+Integer newNums[] = Arrays.stream(nums).boxed().toArray(Integer[]::new);
+```
+
+## 字符串截取
+
+```java
+StringBuilder sb = ``new` `StringBuilder(``"name=Marydon&sex=男&age=18&"``);
+System.out.println(``"StringBuilder去除最后一个字符》方式一："` `+ sb.substring(0,sb.length() - 1));
+```
