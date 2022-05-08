@@ -74,7 +74,7 @@ for (int i = 0; i < tasks.length; i++) {
 int[] edge = new int[26];//字母hash
 ```
 
-## 字符串变字典
+## 字符串变数组
 
 ```java
 char[] chars = S.toCharArray();
