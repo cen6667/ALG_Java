@@ -7,6 +7,7 @@ public class MergeSort {
             // 递归
             sort(a, low, mid);
             sort(a, mid + 1, high);
+            // 合并
             merge(a, low, mid, high);
         }
         return a;
