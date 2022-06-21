@@ -68,6 +68,10 @@ for (int i = 0; i < tasks.length; i++) {
 }
 ```
 
+```java
+need.put(c, need.getOrDefault(c, 0)+1);
+```
+
 ## 26个字母hash
 
 ```java
@@ -187,4 +191,10 @@ Integer newNums[] = Arrays.stream(nums).boxed().toArray(Integer[]::new);
 ```java
 StringBuilder sb = ``new` `StringBuilder(``"name=Marydon&sex=男&age=18&"``);
 System.out.println(``"StringBuilder去除最后一个字符》方式一："` `+ sb.substring(0,sb.length() - 1));
+```
+
+## 数字变二进制
+
+```java
+String s = Integer.toBinaryString(n);
 ```
