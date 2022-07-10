@@ -1,16 +1,107 @@
 package demo;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class demodemo {
     public static void main(String[] args) {
 //        int[] nums1 = {10,20,50,15,30,10};
 ////        int[] nums2 = {40,20,10,100,10,10};
 ////        System.out.println(maximumsSplicedArray(nums1,nums2));
-        int[][] nums = {{1, 3},{2, 6},{8, 10},{15, 18}};
-        System.out.println(merge(nums));
+//        int[][] nums = {{1, 3},{2, 6},{8, 10},{15, 18}};
+//        System.out.println(merge(nums));
+//        Deque<Character> deque = new LinkedList();
+//        deque.removeAll(deque);
+////        String s ="1123";
+//        String key = "the quick brown fox jumps over the lazy dog", message = "vkbs bs t suepuv";
+//        System.out.println(decodeMessage(key, message));
+        int n = 6, delay = 2, forget = 4;
+        System.out.println(peopleAwareOfSecret(n, delay, forget));
+
+    }
+
+
+
+    public static int[][] spiralMatrix(int m, int n, ListNode head) {
+        int[][] res = new int[m][n];
+        for(int[] nums: res){
+            Arrays.fill(nums, -1);
+        }
+        int top = 0, bottom = m-1;
+        int left = 0, right = n-1;
+
+        while(head != null){
+            for(int i = left; i<=right;i++){
+                if(head == null) break;
+                res[top][i] = head.val;
+                head = head.next;
+            }
+            top++;
+            for(int i = top; i<=bottom;i++){
+                if(head == null) break;
+                res[i][right] = head.val;
+                head = head.next;
+            }
+            right--;
+            for(int i = right; i>=left;i--){
+                if(head == null) break;
+                res[bottom][i] = head.val;
+                head = head.next;
+            }
+            bottom--;
+            for(int i = bottom; i>=top;i--){
+                if(head == null) break;
+                res[i][left] = head.val;
+                head = head.next;
+            }
+            left++;
+        }
+        return res;
+    }
+
+    static final int MOD = (int) 1e9 + 7;
+    public static int peopleAwareOfSecret(int n, int delay, int forget) {
+        if(n == 1) return 1;
+        // dp[i]:第i天新增知道密码的人数
+        int[] dp = new int[n+1];
+        dp[0] = 0;
+        dp[1] = 1;
+        // 初始化
+        for(int i = 2; i<=n; i++){
+            for(int j = Math.max(0, i-forget+1); j<= i - delay;j++){
+                dp[i] = (dp[i]+dp[j]) % MOD;
+            }
+        }
+        int res= 0;
+        for (int i = n;i>n-forget;i--){
+            res = (res+dp[i]) %MOD;
+        }
+
+        return res;
+    }
+
+    public static String decodeMessage(String key, String message) {
+        int index = 0;
+        int[] book = new int[26];
+        Arrays.fill(book, -1);
+        for(int i = 0; i<key.length();i++){
+            char c = key.charAt(i);
+            int tmp = c-'a';
+            if(c != ' ' && book[tmp] == -1){
+                book[tmp] = index;
+                index++;
+            }
+        }
+        String res = "";
+        for(int i = 0; i<message.length();i++){
+            char c = message.charAt(i);
+            if(c == ' '){
+                res = res + ' ';
+                continue;
+            }
+            char tmp = (char) (book[c-'a']+'a');
+            res = res + tmp;
+        }
+        return res;
     }
 
     public static int[][] merge(int[][] intervals) {
