@@ -5,8 +5,11 @@ public class BubbleSort {
         if (array == null || array.length == 0) {
             return null;
         }
+        // 计算循环次数
+        int step = 0;
 
         for (int i = 0; i < array.length - 1; i++) {
+            boolean flag = true;
             for (int j = 0; j < array.length - 1 - i; j++) {
                 /*
                  j比较的次数为数组长度减去i的原因是：
@@ -17,14 +20,19 @@ public class BubbleSort {
                     int temp = array[j];
                     array[j] = array[j + 1];
                     array[j + 1] = temp;
+                    flag = false;
                 }
+                step++;
             }
+            if(flag) break;
         }
+        System.out.println("循环次数"+step);
         return array;
     }
 
     public static void main(String[] args){
         int[] array = {5,7,9,1,2,3};
+//        int[] array = {1,2,3,4,5,6};
         int[] sort = bubbleSort(array);
         for (int value : sort) {
             System.out.println(value);

@@ -21,7 +21,8 @@ public class QuickSort {
         int pivot = nums[left];
         //循环不变量（定义不变），初始化保证区间为空
         // <= pivot [left,j]
-        // > pivot (j,right]
+        // > pivot (j,i]
+        // 让j一直处在
         int j = left;
         for(int i = left+1; i<=right;i++){
             if(nums[i] <= pivot){

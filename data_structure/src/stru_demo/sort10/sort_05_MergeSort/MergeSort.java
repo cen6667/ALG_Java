@@ -25,7 +25,8 @@ public class MergeSort {
         // 从中间值开始比较前后两个数组
         int i = low, j = mid + 1;
         while (i <= mid && j <= high) {
-            if (a[i] < a[j]) {
+            //注意稳定性<=
+            if (a[i] <= a[j]) {
                 temp[k++] = a[i++];
             } else {
                 temp[k++] = a[j++];
@@ -49,7 +50,7 @@ public class MergeSort {
     }
 
     public static void main(String[] args) {
-        int[] arr = {5, 3, 7, 2, 9, 4, 1};
+        int[] arr = {2, 5, 3, 7, 2, 9, 4, 1};
         int[] sort = sort(arr, 0, 6);
         for (int i : sort) {
             System.out.print(i + " ");
