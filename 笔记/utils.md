@@ -208,3 +208,16 @@ System.out.println(``"StringBuilder去除最后一个字符》方式一："` `+ 
 ```java
 String s = Integer.toBinaryString(n);
 ```
+
+## List变数组
+
+```java
+list.stream().mapToInt(Integer::intValue).toArray();
+```
+
+```java
+int[] res = new int[resList.size()];
+for (int i = 0; i < resList.size(); i++) {
+    res[i] = resList.get(i);
+}
+```

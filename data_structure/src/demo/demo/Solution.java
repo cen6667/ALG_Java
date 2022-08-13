@@ -24,7 +24,7 @@ public class Solution {
                 j >= arr[0].length || j < 0 ||
                 sum > threshold || arr[i][j]){
             return;
-        }else if
+        }
 
         // 计数
         res++;
