@@ -2,49 +2,34 @@ package demo.demo;
 
 import java.util.*;
 public class Solution {
+    //6 5
+    //5 6 7 8 9 10
     public static void main(String[] args) {
-        Solution sl = new Solution();
-        System.out.println(sl.movingCount(1,2, 3));
-    }
-
-    private int res = 0;
-
-    public int movingCount(int threshold, int rows, int cols) {
-        if (rows <= 0 || cols <= 0 || threshold < 0)
-            return 0;
-        boolean[][] arr = new boolean[rows][cols];
-        dfs(threshold, arr, 0, 0);
-        return res;
-    }
-
-    private void dfs(int threshold, boolean[][] arr, int i, int j){
-        // 边界条件
-        int sum = sumNum(i) + sumNum(j);
-        if(i >= arr.length || i<0 ||
-                j >= arr[0].length || j < 0 ||
-                sum > threshold || arr[i][j]){
-            return;
+        Scanner sc = new Scanner(System.in);
+        int m = sc.nextInt();
+//        int n = sc.nextInt();
+        sc.nextLine();
+        List<Integer> list = new ArrayList<>();
+        String[] inputs = sc.nextLine().split(" ");
+        for (int i = 0; i < inputs.length; i++) {
+            list.add(Integer.valueOf(inputs[i]));
+        }
+        Deque<Integer> res = new LinkedList<>();
+        int len = 1;
+        while(res.size() != m){
+            int num = list.get(list.size()-len);
+            len++;
+            res.addFirst(num);
+            // 两次转移
+            int tmp = res.pollLast();
+            res.addFirst(tmp);
+            tmp = res.pollLast();
+            res.addFirst(tmp);
+        }
+        for (int i = 0; i < m; i++) {
+            System.out.print(res.pop()+" ");
         }
 
-        // 计数
-        res++;
-        arr[i][j] = true;
 
-        // 递归
-        dfs(threshold, arr, i+1, j);
-        dfs(threshold, arr, i-1, j);
-        dfs(threshold, arr, i, j+1);
-        dfs(threshold, arr, i, j-1);
     }
-
-    private int sumNum(int i){
-        int sum = i%10;
-        while(i/10 !=0){
-            i = i/10;
-            sum += i%10;
-        }
-        return sum;
-    }
-
-
 }
