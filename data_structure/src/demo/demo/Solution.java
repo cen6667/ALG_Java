@@ -5,31 +5,30 @@ public class Solution {
     //6 5
     //5 6 7 8 9 10
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int m = sc.nextInt();
-//        int n = sc.nextInt();
-        sc.nextLine();
-        List<Integer> list = new ArrayList<>();
-        String[] inputs = sc.nextLine().split(" ");
-        for (int i = 0; i < inputs.length; i++) {
-            list.add(Integer.valueOf(inputs[i]));
-        }
-        Deque<Integer> res = new LinkedList<>();
-        int len = 1;
-        while(res.size() != m){
-            int num = list.get(list.size()-len);
-            len++;
-            res.addFirst(num);
-            // 两次转移
-            int tmp = res.pollLast();
-            res.addFirst(tmp);
-            tmp = res.pollLast();
-            res.addFirst(tmp);
-        }
-        for (int i = 0; i < m; i++) {
-            System.out.print(res.pop()+" ");
-        }
+        int[] nums = {};
 
 
     }
+
+//    public static int[] calculate(int[] nums){
+//        int[] res = new int[2];
+//        Arrays.sort(nums);
+//        int right = 0;
+//        int left = 0;
+//        int len = 1;
+//        int cur = 0;
+//        for(int i=1;i<nums.length;i++){
+//            int dif = nums[i] - nums[i-1];
+//            if(dif == 1){
+//                len++;
+//                right++;
+//                if(cur < len){
+//                    res[1] = right;
+//                }
+//            }else{
+//                len = 1;
+//
+//            }
+//        }
+//    }
 }
