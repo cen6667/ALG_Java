@@ -1,6 +1,26 @@
 package stru_demo.sort10.sort_03_InsertionSort;
 
 public class InsertionSort {
+    public static int[] insert(int[] arr){
+        for(int i = 1; i<arr.length; i++){
+            int tmp = arr[i];
+            // 位置
+            int index = i;
+            for (int j = i-1; j >= 0; j--) {
+                if(arr[j] > tmp){
+                    arr[j+1] = arr[j];
+                    index=j;
+                }else {
+                    break;
+                }
+            }
+            if(index != i){
+                arr[index] = tmp;
+            }
+        }
+        return arr;
+    }
+
     public static int[] insertionSort(int[] arr) {
         if (arr == null || arr.length == 0) {
             return null;

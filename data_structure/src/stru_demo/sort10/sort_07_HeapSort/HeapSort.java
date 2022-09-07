@@ -27,6 +27,16 @@ public class HeapSort {
     /**
      * 调整大顶堆
      */
+//    public static void adjustHeap(int[] arr, int i, int length) {
+//        // 从左节点开始2*i+1，如果交换则继续向下比较
+//        int left = 2*i+1, right = left+1;
+//        int k = left;
+//        if(length-1 >= right && arr[left] < arr[right]) k =right;
+//        if(length > k && arr[k] > arr[i]){
+//            swap(arr, k, i);
+//            adjustHeap(arr, k, length);
+//        }
+//    }
     public static void adjustHeap(int[] arr, int i, int length) {
         if (arr == null || arr.length == 0){
             return;
@@ -62,9 +72,24 @@ public class HeapSort {
     }
 
     public static void main(String[] args) {
-        int[] arr = {2, 8, 9, 6, 5, 3, 7};
+        int[] arr = {3,2,1,5,6,4};
         sort(arr);
         System.out.println(Arrays.toString(arr));
+        System.out.println(findKthLargest(arr,2));
+    }
+
+    public static int findKthLargest(int[] nums, int k) {
+
+        // 构建大顶堆，从最后一个非叶子节点开始
+        for(int i = nums.length/2-1; i>=0; i--){
+            adjustHeap(nums, i, nums.length);
+        }
+        // 将根与最后一个节点交换
+        for(int j = nums.length-1; j>=nums.length-k; j--){
+            swap(nums, 0, j);
+            adjustHeap(nums, 0, j);
+        }
+        return nums[nums.length-k];
     }
 }
 

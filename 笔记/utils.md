@@ -221,3 +221,9 @@ for (int i = 0; i < resList.size(); i++) {
     res[i] = resList.get(i);
 }
 ```
+
+## 查找字符串
+
+```
+str.indexOf()
+```

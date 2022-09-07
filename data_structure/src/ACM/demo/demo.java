@@ -10,34 +10,48 @@ import java.lang.*;
  * @description: ACM模式输入输出
  */
 public class demo {
-    public static void main(String[] args) {
-        // 数字读取
-        int m;
-        double sum,n;
-        Scanner sc = new Scanner(System.in);
-        while(sc.hasNext()){
-            n=sc.nextInt();
-            m=sc.nextInt();
-            sum=0;
-            for(int i=0;i<m;i++){
-                sum=sum+n;
-                n=Math.sqrt(n);
-            }
-            System.out.printf("%.2f",sum);
-            System.out.println();
+    public static void main(String[] args) throws Exception {
+        String s1 = "abc" + "def";
+        String s2 = new String(s1);
+        if(s1 == s2){
+            System.out.println("==");
         }
-        // 读取完数字要换行
-        int n1 = sc.nextInt(); //需要在后面添加sc.nextLine();换到下一行
-        sc.nextLine();
-        List<List<Integer>> adj = new ArrayList<>();
-        for (int i = 0; i < n1; i++) {
-            List<Integer> list = new ArrayList<>();
-            String[] inputs = sc.nextLine().split(" ");
+        if(s1.equals(s2)){
+            System.out.println("eq");
+        }
 
-            for (int j = 1; j < inputs.length; j++) {
-                list.add(Integer.valueOf(inputs[j]));
+        int n = 3;
+        int m = 3;
+        int k = 2;
+        int[][] arr = new int[n][m];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                arr[i][j] = maxcommonDivisor(i+1, j+1);
             }
-            adj.add(list);
         }
+        int res = 0;
+        // 前两个循环是有多少个K*K子矩阵
+        for (int i = 0; i < n - k + 1; i++) {
+            for (int j = 0; j < m - k +1; j++) {
+                // K*K子矩阵求和
+                for (int l = i; l < i+k; l++) {
+                    for (int o = j; o < j+k; o++) {
+                        res += arr[l][o];
+                    }
+                }
+
+            }
+        }
+        System.out.println(res);
+
+    }
+
+    public static int maxcommonDivisor(int a, int b){
+        while(b!=0) {
+            int r=a%b;
+            a=b;
+            b=r;
+        }
+        return a;
     }
 }

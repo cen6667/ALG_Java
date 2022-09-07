@@ -36,6 +36,42 @@ class Main{
 
 ```
 
+# 数组读取
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+
+        int[][] arr = new int[n][n];
+        for(int i = 0; i < n; i++){
+            sc.nextLine();
+            for(int j = 0; j < n; j++){
+                arr[i][j] = sc.nextInt();
+            }
+        }
+
+    }
+}
+```
+
+字符串数组
+
+```
+String[] str = sc.nextLine().split(" ");
+```
+
+List读取
+
+```java
+List<Integer> list = new ArrayList<>();
+String[] inputs = sc.nextLine().split(" ");
+for (int i = 0; i < inputs.length; i++) {
+    list.add(Integer.valueOf(inputs[i]));
+}
+```
+
 
 
 # 输入
@@ -61,7 +97,33 @@ for(int i = 0;i<n;i++){
 }
 ```
 
+## 时间读取
 
+```java
+SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss");
+Date date1 = new Date();
+Date date2 = new Date();
+
+Arrays.sort(str);
+
+String res = str[0];
+int dif = 0;
+for (int i = 0; i < n-1; i++) {
+    try {
+        date1 = sdf.parse(str[i]);
+        date2 = sdf.parse(str[i+1]);
+    } catch (ParseException e) {
+        e.printStackTrace();
+    }
+
+    int tmp = Math.toIntExact((int) date2.getTime() - date1.getTime());
+    if(tmp>dif) {
+        dif = tmp;
+        res = str[i];
+    }
+
+}
+```
 
 
 
