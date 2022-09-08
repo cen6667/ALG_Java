@@ -4,9 +4,11 @@ import java.util.*;
 public class Solution {
     public static void main(String[] args) {
 
-        int[] nums = {};
-
-
+        int e = 4296;
+        int d = 1601;
+        int n = 4757;
+        long pow = (long) Math.pow(e,d);
+        System.out.println(((int) Math.pow(e,d))%n);
     }
     public static int[] calculate(int[] nums){
         int[] res = new int[2];
